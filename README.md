@@ -28,9 +28,6 @@ Main users:
 * Spare parts suppliers
 * Sustainability-focused aviation organizations
 
-Example illustration of the process:
-![Example](https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg)
-
 ## Data sources and AI methods
 The data used will come from various public and private sources:
 * [OpenSky Network](https://opensky-network.org/) for flight history
