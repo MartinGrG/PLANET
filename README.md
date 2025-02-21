@@ -1,7 +1,7 @@
 # PLANET
 ## Predictive Logistic and Allocation for Eco-friendly Transport
 
-##Summary
+## Summary
 PLANET aims to optimize the global distribution of spare parts for business aviation by predicting aircraft movements. Using AI-driven forecasting based on flight history, weather conditions, and major global events, the project seeks to reduce unnecessary transport, minimize costs, and lower the aviation industry's carbon footprint. By ensuring that spare parts are available where they are needed, PLANET contributes to more efficient and sustainable logistics in business aviation.
 
 ## Background
