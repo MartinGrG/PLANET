@@ -1,4 +1,4 @@
-# PLANET
+# P.L.A.N.E.T
 ## Predictive Logistic and Allocation for Eco-friendly Transport
 
 ## Summary
