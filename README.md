@@ -1,51 +1,74 @@
 # PLANET
-Predictive Logistic and Allocation for Eco-friendly Transport
-
-<!-- This is the markdown template for the final project of the Building AI course, 
-created by Reaktor Innovations and University of Helsinki. 
-Copy the template, paste it to your GitHub README and edit! -->
+## Predictive Logistic and Allocation for Eco-friendly Transport
 
 ## Background
-Which problems does your idea solve? How common or frequent is this problem? What is your personal motivation? Why is this topic important or interesting?
-This is how you make a list, if you need one:
-* problem 1
-* problem 2
-* etc.
+The rapid availability of spare parts is crucial for business aircraft maintenance, but their global distribution presents a logistical challenge. Poor stock management can lead to extended delays and high costs, as well as unnecessary emissions due to inefficient logistics and emergency shipments.
+
+Problems encountered:
+* Inaccurate forecasting of spare parts needs
+* High logistics costs due to inefficient stock distribution
+* Aircraft downtime caused by unavailable parts
+* Increased carbon footprint due to excessive and unoptimized transport of spare parts
+
+The goal of this project is to optimize the distribution of spare parts by predicting the future position of business jets. This optimization will be based on flight history, weather conditions, and major global events likely to attract private jet owners (sporting events, international summits, etc.). By reducing unnecessary transportation and ensuring parts are available where they are needed, this project aims to decrease emissions and contribute to a more sustainable aviation industry.
+
 ## How is it used?
-Describe the process of using the solution. In what kind situations is the solution needed (environment, time, etc.)? Who are the users, what kinds of needs should be taken into account?
-Images will make your README look nice!
-Once you upload an image to your repository, you can link link to it like this (replace the URL with file path, if you've uploaded an image to Github.)
-![Cat](https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg)
-If you need to resize images, you have to use an HTML tag, like this:
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg" width="300">
-This is how you create code examples:
-```
-def main():
-   countries = ['Denmark', 'Finland', 'Iceland', 'Norway', 'Sweden']
-   pop = [5615000, 5439000, 324000, 5080000, 9609000]   # not actually needed in this exercise...
-   fishers = [1891, 2652, 3800, 11611, 1757]
-   totPop = sum(pop)
-   totFish = sum(fishers)
-   # write your solution here
-   for i in range(len(countries)):
-      print("%s %.2f%%" % (countries[i], 100.0))    # current just prints 100%
-main()
-```
+The predictive system analyzes multiple data sources to estimate the future location of business aircraft. It enables maintenance companies and parts suppliers to adjust their inventory proactively, reducing the need for last-minute, high-emission transport solutions.
+
+1. Data collection and analysis:
+   - Flight history
+   - Weather conditions
+   - Global event calendar
+2. Modeling and forecasting aircraft movements
+3. Optimizing spare parts stock distribution to reduce emissions
+
+Main users:
+* Business aviation companies
+* Aircraft maintenance providers
+* Spare parts suppliers
+* Sustainability-focused aviation organizations
+
+Example illustration of the process:
+![Example](https://upload.wikimedia.org/wikipedia/commons/5/5e/Sleeping_cat_on_her_back.jpg)
+
 ## Data sources and AI methods
-Where does your data come from? Do you collect it yourself or do you use data collected by someone else?
-If you need to use links, here's an example:
-[Twitter API](https://developer.twitter.com/en/docs)
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+The data used will come from various public and private sources:
+* [OpenSky Network](https://opensky-network.org/) for flight history
+* Meteorological sources (e.g., NOAA, METAR)
+* International event databases
+
+Planned AI methods:
+* Unsupervised learning to identify groups of aircraft with similar behaviors
+* Supervised learning to refine predictions of future positions
+* Optimization algorithms to minimize logistics-related emissions
+
+
 ## Challenges
-What does your project _not_ solve? Which limitations and ethical considerations should be taken into account when deploying a solution like this?
+* Reliability of data sources and real-time accessibility
+* Complexity of forecasting models requiring fine-tuning
+* Ethical and regulatory considerations regarding flight data usage
+* Balancing supply chain efficiency with sustainability goals
+
 ## What next?
-How could your project grow and become something even more? What kind of skills, what kind of assistance would you  need to move on? 
+Next steps include:
+* Testing and comparing supervised and unsupervised models
+* Integration of real-time data
+* Deployment of a user interface for spare parts suppliers
+* Refinement of emissions reduction calculations
+* Partnerships with sustainable aviation initiatives
+
+Skills and assistance needed:
+* Expertise in machine learning applied to trajectory prediction
+* Access to flight and event databases
+* Collaboration with aircraft maintenance stakeholders
+* Input from sustainability experts on carbon footprint reduction
+
 ## Acknowledgments
-* list here the sources of inspiration 
-* do not use code, images, data etc. from others without permission
-* when you have permission to use other people's materials, always mention the original creator and the open source / Creative Commons licence they've used
-  <br>For example: [Sleeping Cat on Her Back by Umberto Salvagnin](https://commons.wikimedia.org/wiki/File:Sleeping_cat_on_her_back.jpg#filelinks) / [CC BY 2.0](https://creativecommons.org/licenses/by/2.0)
-* etc
+* Open data sources (OpenSky, METAR, etc.)
+* Contributions from the open-source AI and aviation communities
+* Inspiration from predictive supply chain models
+* Sustainable aviation research initiatives
+
+---
+Project developed as part of an AI challenge for sustainable aviation.
+
