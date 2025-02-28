@@ -34,7 +34,7 @@ def fill_missing_arrivals(df, acceptable_range):
                     df.at[index, 'arrival'] = similar_flights.iloc[0]['departure'] 
                 else:
                     df.at[index, 'arrival'] = similar_flights.iloc[0]['arrival']  
-                print(f"{index + 2}: {df.at[index, 'arrival']} from {similar_flights.index[0] + 2}")
+                #print(f"{index + 2}: {df.at[index, 'arrival']} from {similar_flights.index[0] + 2}")
             elif len(similar_flights) > 1:
                 # Ensure similar_flights is not empty before accessing idxmin()
                 if not similar_flights.empty:
@@ -45,7 +45,7 @@ def fill_missing_arrivals(df, acceptable_range):
                             df.at[index, 'arrival'] = closest_match['departure']
                         else:
                             df.at[index, 'arrival'] = closest_match['arrival']
-                        print(f"{index + 2}: {df.at[index, 'arrival']} from {closest_idx + 2}")
+                        #print(f"{index + 2}: {df.at[index, 'arrival']} from {closest_idx + 2}")
     return df
 
 def fill_missing_departure(df, acceptable_range):
@@ -82,7 +82,7 @@ def fill_missing_departure(df, acceptable_range):
                     df.at[index, 'departure'] = similar_flights.iloc[0]['arrival'] 
                 else:
                     df.at[index, 'departure'] = similar_flights.iloc[0]['departure']  
-                print(f"{index + 2}: {df.at[index, 'arrival']} from {similar_flights.index[0] + 2}")
+                #print(f"{index + 2}: {df.at[index, 'arrival']} from {similar_flights.index[0] + 2}")
             elif len(similar_flights) > 1:
                 # Ensure similar_flights is not empty before accessing idxmin()
                 if not similar_flights.empty:
@@ -93,7 +93,7 @@ def fill_missing_departure(df, acceptable_range):
                             df.at[index, 'departure'] = closest_match['arrival']
                         else:
                             df.at[index, 'departure'] = closest_match['departure']
-                        print(f"{index + 2}: {df.at[index, 'arrival']} from {closest_idx + 2}")
+                        #print(f"{index + 2}: {df.at[index, 'arrival']} from {closest_idx + 2}")
     return df
 
 def fill_round_trip(df, acceptable_range):
@@ -106,30 +106,27 @@ def fill_round_trip(df, acceptable_range):
             if index > 0 and row['arrival'] == df.at[index-1, 'departure']:
                 if row['flightDuration'] * (1 - acceptable_range) < df.at[index-1, 'flightDuration'] < row['flightDuration'] * (1 + acceptable_range):
                     df.at[index, 'departure'] = df.at[index-1, 'arrival']
-                    print(f"Round trip departure -1: {index+2}")
+                    #print(f"Round trip departure -1: {index+2}")
             if index < df.shape[0] - 1 and row['arrival'] == df.at[index+1, 'departure']:
                 if row['flightDuration'] * (1 - acceptable_range) < df.at[index+1, 'flightDuration'] < row['flightDuration'] * (1 + acceptable_range):
                     df.at[index, 'departure'] = df.at[index+1, 'arrival']
-                    print(f"Round trip departure +1: {index+2}")
+                    #print(f"Round trip departure +1: {index+2}")
 
         if pd.isna(row['arrival']):  # 'arrival' missing - 'departure' filled
             if index > 0 and row['departure'] == df.at[index-1, 'arrival']:
                 if row['flightDuration'] * (1 - acceptable_range) < df.at[index-1, 'flightDuration'] < row['flightDuration'] * (1 + acceptable_range):
                     df.at[index, 'arrival'] = df.at[index-1, 'departure']
-                    print(f"Round trip arrival -1: {index+2}")
+                    #print(f"Round trip arrival -1: {index+2}")
             if index < df.shape[0] - 1 and row['departure'] == df.at[index+1, 'arrival']:
                 if row['flightDuration'] * (1 - acceptable_range) < df.at[index+1, 'flightDuration'] < row['flightDuration'] * (1 + acceptable_range):
                     df.at[index, 'arrival'] = df.at[index+1, 'departure']
-                    print(f"Round trip arrival +1: {index+2}")
+                    #print(f"Round trip arrival +1: {index+2}")
     return df
 
 def count_na(df, columns):
     na_counts = df[columns].isna().sum()  # Count NaN values in specified columns
     total_na = na_counts.sum()
     
-    for col, count in na_counts.items():
-        print(f" - {col}: {count}")
-    
-    print(f"\nTotal {total_na}")
-
-
+    #for col, count in na_counts.items():
+    #    print(f" - {col}: {count}")
+    return total_na

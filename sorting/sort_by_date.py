@@ -2,24 +2,19 @@ import os
 import pandas as pd
 
 
+def sort_date(file):
+    # Iterate through all files in the folder
+    if file.endswith('.csv'):        
+        # Load the CSV file
+        df = pd.read_csv(file)
 
-def sort_date(folder_path):
-    # Parcourir tous les fichiers dans le dossier
-    for filename in os.listdir(folder_path):
-        if filename.endswith('.csv'):
-            file_path = os.path.join(folder_path, filename)
-            
-            # Charger le fichier CSV
-            df = pd.read_csv(file_path)
+        # Convert the date columns to datetime format
+        df['firstseen'] = pd.to_datetime(df['firstseen'])
 
-            # Convertir les colonnes de dates en format datetime
-            df['firstseen'] = pd.to_datetime(df['firstseen'])
+        # Sort the data by the 'firstseen' column
+        df_sorted = df.sort_values(by='firstseen')
 
-            # Trier les données par la colonne 'firstseen'
-            df_sorted = df.sort_values(by='firstseen')
+        # Save the sorted file, overwriting the old file
+        df_sorted.to_csv(file, index=False)
 
-            # Sauvegarder le fichier trié en écrasant l'ancien fichier
-            df_sorted.to_csv(file_path, index=False)
-
-            print(f"Le fichier '{filename}' a été trié et a remplacé l'ancien fichier.")
-
+        print(f"The file '{file}' has been sorted and replaced the old file.")
