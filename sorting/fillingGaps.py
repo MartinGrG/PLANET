@@ -123,10 +123,42 @@ def fill_round_trip(df, acceptable_range):
                     #print(f"Round trip arrival +1: {index+2}")
     return df
 
-def count_na(df, columns):
+def count_na_airports(df, columns = ['departure','arrival']):
+
     na_counts = df[columns].isna().sum()  # Count NaN values in specified columns
     total_na = na_counts.sum()
-    
+    if columns == ['departure','arrival']:
+        total_rows = len(df)
+        both_na = (df['departure'].isna() & df['arrival'].isna()).sum()
+        both_na_percentage = round((both_na / total_rows) * 100, 1) if total_rows > 0 else 0
+        return total_na, both_na, both_na_percentage
     #for col, count in na_counts.items():
     #    print(f" - {col}: {count}")
     return total_na
+
+def count_na_fligth_time(df):
+    na_counts = df['flightDuration'].isna().sum()
+    total_rows = len(df)
+    percentage = round((na_counts / total_rows) * 100, 1) if total_rows > 0 else 0
+    return percentage
+
+def delete_too_much_blanks(df, acceptable_range):
+    _, _, percentage_airports = count_na_airports(df)  # Retrieve the percentage of empty rows
+    percentage_fligth_time = count_na_fligth_time(df)
+    total = percentage_airports + percentage_fligth_time
+    if total > acceptable_range:
+        return True, total,percentage_airports, percentage_fligth_time    # Too many NaNs, do not modify the DataFrame
+    else:
+        df = df.dropna(subset=['departure', 'arrival'], how='all')  # Remove rows where both columns are NaN
+        df_cleaned = df.dropna(subset=['flightDuration'], how='all')
+        return False, df_cleaned, 0, 0  # Return the modified DataFrame
+
+
+def fill_with_unknown(df):
+    df = df.copy()  # Ensure we are modifying a fresh copy of the DataFrame
+    df['departure'] = df['departure'].fillna('unknown_departure')  # Fill NaNs in 'departure'
+    df['arrival'] = df['arrival'].fillna('unknown_arrival')  # Fill NaNs in 'arrival'
+    return df
+
+def delete_if_unknown(df):
+    return df[(df["departure"] != "unknown_departure") & (df["arrival"] != "unknown_arrival")]
