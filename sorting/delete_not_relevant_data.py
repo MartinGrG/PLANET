@@ -1,5 +1,6 @@
 import os
 import csv
+import pandas as pd
 
 # Specify the folder path
 def delete_not_relevant_csv(input_file, minimum):

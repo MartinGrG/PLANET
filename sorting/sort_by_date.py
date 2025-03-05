@@ -17,4 +17,4 @@ def sort_date(file):
         # Save the sorted file, overwriting the old file
         df_sorted.to_csv(file, index=False)
 
-        print(f"The file '{file}' has been sorted and replaced the old file.")
+        #print(f"The file '{file}' has been sorted and replaced the old file.")
